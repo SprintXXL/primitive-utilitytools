@@ -1,6 +1,6 @@
 {
-  "parent": "item/handheld",
+  "parent": "item/generated",
   "textures": {
-    "layer0": "primitiveutilitytools:hammer"
+    "layer0": "primitiveutilitytools:generic/hammer_generic"
   }
 }
