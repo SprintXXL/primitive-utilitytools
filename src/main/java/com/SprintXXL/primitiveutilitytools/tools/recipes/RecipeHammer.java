@@ -3,9 +3,10 @@ package com.SprintXXL.primitiveutilitytools.tools.recipes;
 import com.SprintXXL.primitivematerials.library.MaterialDefinition;
 import com.SprintXXL.primitivematerials.library.MaterialRegistry;
 import com.SprintXXL.primitivematerials.library.util.MaterialForm;
-import com.SprintXXL.primitiveutilitytools.library.MaterialStatsRegistry;
+import com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStatsRegistry;
 import com.SprintXXL.primitiveutilitytools.tools.nbt.UtilityToolNBT;
 import com.SprintXXL.primitiveutilitytools.tools.registry.ModItems;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
 import com.SprintXXL.primitiveutilitytools.util.RecipeHelper;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -15,8 +16,8 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 public class RecipeHammer extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
-    private static final int[] INGOT_SLOTS = {0, 1, 2, 3, 4, 5};
-    private static final int HANDLE_SLOT = 7;
+    private static final int[] MAIN_SLOTS = {0, 1, 2, 3, 4, 5};
+    private static final int SUPPORT_SLOT = 7;
 
     @Override
     public boolean matches(InventoryCrafting inv, World worldIn) {
@@ -29,27 +30,27 @@ public class RecipeHammer extends IForgeRegistryEntry.Impl<IRecipe> implements I
             return false;
         }
 
-        ItemStack handleStack = getHandleStack(inv);
-        ItemStack ingotStack = inv.getStackInSlot(0); // First Ingot Slot
+        ItemStack supportStack = getSupportStack(inv);
+        ItemStack mainStack = inv.getStackInSlot(0); // First Main Slot
 
-        if (handleStack.isEmpty() || ingotStack.isEmpty()) {
+        if (supportStack.isEmpty() || mainStack.isEmpty()) {
             return false;
         }
 
         MaterialDefinition mainMaterial = getMainMaterial(inv);
-        MaterialDefinition handleMaterial = getHandleMaterial(inv);
+        MaterialDefinition supportMaterial = getSupportMaterial(inv);
 
-        if (mainMaterial == null || handleMaterial == null) {
+        if (mainMaterial == null || supportMaterial == null) {
             return false;
         }
 
-        if (!MaterialStatsRegistry.hasStats(mainMaterial.getID()) || !MaterialStatsRegistry.hasStats(handleMaterial.getID())) {
+        if (!MaterialStatsRegistry.hasStats(mainMaterial.getID()) || !MaterialStatsRegistry.hasStats(supportMaterial.getID())) {
             return false;
         }
 
         String expectedMaterial = mainMaterial.getID();
 
-        for (int slot : INGOT_SLOTS) {
+        for (int slot : MAIN_SLOTS) {
 
             ItemStack stack = inv.getStackInSlot(slot);
 
@@ -75,17 +76,17 @@ public class RecipeHammer extends IForgeRegistryEntry.Impl<IRecipe> implements I
     public ItemStack getCraftingResult(InventoryCrafting inv) {
 
         MaterialDefinition mainMaterial = getMainMaterial(inv);
-        MaterialDefinition handleMaterial = getHandleMaterial(inv);
+        MaterialDefinition supportMaterial = getSupportMaterial(inv);
 
-        if (mainMaterial == null || handleMaterial == null) {
+        if (mainMaterial == null || supportMaterial == null) {
             return ItemStack.EMPTY;
         }
 
         ItemStack result = new ItemStack(ModItems.HAMMER);
 
-        UtilityToolNBT.setToolType(result, "hammer");
+        UtilityToolNBT.setToolType(result, ToolType.HAMMER);
         UtilityToolNBT.setMainMaterial(result, mainMaterial.getID());
-        UtilityToolNBT.setHandleMaterial(result, handleMaterial.getID());
+        UtilityToolNBT.setSupportMaterial(result, supportMaterial.getID());
 
         return result;
     }
@@ -100,8 +101,8 @@ public class RecipeHammer extends IForgeRegistryEntry.Impl<IRecipe> implements I
         return new ItemStack(ModItems.HAMMER);
     }
 
-    private static ItemStack getHandleStack(InventoryCrafting inv) {
-        return inv.getStackInSlot(HANDLE_SLOT);
+    private static ItemStack getSupportStack(InventoryCrafting inv) {
+        return inv.getStackInSlot(SUPPORT_SLOT);
     }
 
     private boolean areAllOtherSlotsEmpty(InventoryCrafting inv) {
@@ -119,15 +120,15 @@ public class RecipeHammer extends IForgeRegistryEntry.Impl<IRecipe> implements I
 
     private MaterialDefinition getMainMaterial(InventoryCrafting inv) {
 
-        ItemStack ingotStack = inv.getStackInSlot(INGOT_SLOTS[0]);
+        ItemStack mainStack = inv.getStackInSlot(MAIN_SLOTS[0]);
 
-        return MaterialRegistry.getMaterialFromStack(ingotStack, MaterialForm.INGOT);
+        return MaterialRegistry.getMaterialFromStack(mainStack, MaterialForm.INGOT);
     }
 
-    private MaterialDefinition getHandleMaterial(InventoryCrafting inv) {
+    private MaterialDefinition getSupportMaterial(InventoryCrafting inv) {
 
-        ItemStack handleStack = inv.getStackInSlot(HANDLE_SLOT);
+        ItemStack supportStack = inv.getStackInSlot(SUPPORT_SLOT);
 
-        return MaterialRegistry.getMaterialFromStack(handleStack, MaterialForm.ROD);
+        return MaterialRegistry.getMaterialFromStack(supportStack, MaterialForm.ROD);
     }
 }

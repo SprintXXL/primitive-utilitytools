@@ -8,18 +8,18 @@ public class UtilityToolTextureResolver {
 
         return new ResourceLocation(
                 "primitiveutilitytools",
-                "generated/" + data.toolType + "_" + layerType + "_" + getMaterialID(data, layerType)
+                "generated/" + data.toolType.name().toLowerCase() + "_" + layerType + "_" + getMaterialID(data, layerType)
         );
     }
 
     private static String getMaterialID(UtilityToolRenderData data, String layerType) {
 
-        if ("primary".equals(layerType)) {
-            return data.primaryMaterial;
+        if ("main".equals(layerType)) {
+            return data.mainMaterial;
         }
 
-        if ("secondary".equals(layerType)) {
-            return data.secondaryMaterial;
+        if ("support".equals(layerType)) {
+            return data.supportMaterial;
         }
 
         return "unknown";

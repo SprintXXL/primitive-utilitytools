@@ -1,6 +1,6 @@
 package com.SprintXXL.primitiveutilitytools.tools.items;
 
-import com.SprintXXL.primitiveutilitytools.tools.ToolType;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
 import com.SprintXXL.primitiveutilitytools.tools.logic.UtilityToolCalculator;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,6 +14,8 @@ import static com.SprintXXL.primitiveutilitytools.Reference.MODID;
 
 public class UtilityToolBase extends Item {
 
+    private final ToolType toolType;
+
     public UtilityToolBase(String name, ToolType toolType) {
 
         setRegistryName(MODID, name);
@@ -21,6 +23,12 @@ public class UtilityToolBase extends Item {
         setCreativeTab(CreativeTabs.TOOLS);
         setMaxStackSize(1);
         setMaxDamage(1);
+
+        this.toolType = toolType;
+    }
+
+    public ToolType getToolType() {
+        return toolType;
     }
 
     @Override

@@ -1,18 +1,23 @@
 package com.SprintXXL.primitiveutilitytools.client.render;
 
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
+
 public class UtilityToolRenderData {
 
-    public final String toolType;
-    public final String primaryMaterial;
-    public final String secondaryMaterial;
+    public final ToolType toolType;
+    public final int materialSlotCount;
+    public final String mainMaterial;
+    public final String supportMaterial;
 
     public UtilityToolRenderData(
-            String toolType,
-            String primaryMaterial,
-            String secondaryMaterial
+            ToolType toolType,
+            int materialSlotCount,
+            String mainMaterial,
+            String supportMaterial
     ) {
         this.toolType = toolType;
-        this.primaryMaterial = primaryMaterial;
-        this.secondaryMaterial = secondaryMaterial;
+        this.materialSlotCount = materialSlotCount;
+        this.mainMaterial = mainMaterial;
+        this.supportMaterial = supportMaterial;
     }
 }

@@ -19,8 +19,8 @@ import java.util.List;
 public class ModelUtilityTool implements IBakedModel {
 
     private static final String[] LAYERS = {
-            "secondary",
-            "primary"
+            "support",
+            "main"
     };
 
     private final IBakedModel model;
@@ -82,15 +82,21 @@ public class ModelUtilityTool implements IBakedModel {
 
         List<BakedQuad> quads = new ArrayList<>();
 
-        for (String layerType : LAYERS) {
-
-            ResourceLocation texture = UtilityToolTextureResolver.getUtilityToolTexture(data, layerType);
-
-            TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(texture.toString());
-
-            quads.addAll(LayerQuadBuilder.buildLayer(sprite));
+        if (data.materialSlotCount >= 2) {
+            addLayer(quads, "support");
         }
 
+        addLayer(quads, "main");
+
         return quads;
+    }
+
+    private void addLayer(List<BakedQuad> quads, String layerType) {
+
+        ResourceLocation texture = UtilityToolTextureResolver.getUtilityToolTexture(data, layerType);
+
+        TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(texture.toString());
+
+        quads.addAll(LayerQuadBuilder.buildLayer(sprite));
     }
 }

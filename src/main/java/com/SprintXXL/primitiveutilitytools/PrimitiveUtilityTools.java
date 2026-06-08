@@ -1,6 +1,7 @@
 package com.SprintXXL.primitiveutilitytools;
 
-import com.SprintXXL.primitiveutilitytools.library.MaterialStatsRegistry;
+import com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStatsRegistry;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
@@ -13,5 +14,6 @@ public class PrimitiveUtilityTools {
     public void preInit(FMLPreInitializationEvent event) {
 
         MaterialStatsRegistry.init();
+        ToolTypeRegistry.init();
     }
 }

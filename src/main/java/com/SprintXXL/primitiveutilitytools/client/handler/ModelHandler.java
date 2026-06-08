@@ -2,8 +2,12 @@ package com.SprintXXL.primitiveutilitytools.client.handler;
 
 import com.SprintXXL.primitiveutilitytools.client.render.ModelUtilityTool;
 import com.SprintXXL.primitiveutilitytools.tools.registry.ModItems;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeDefinition;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeRegistry;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -20,31 +24,60 @@ public class ModelHandler {
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
 
-        ModelLoader.setCustomModelResourceLocation(
-                ModItems.HAMMER,
-                0,
-                new ModelResourceLocation(ModItems.HAMMER.getRegistryName(), "inventory")
-        );
+        for (ToolTypeDefinition definition : ToolTypeRegistry.getAllToolTypes()) {
+
+            Item item = ModItems.getToolItem(definition.getToolType());
+
+            if (item == null) {
+                continue;
+            }
+
+            ModelLoader.setCustomModelResourceLocation(
+                    item,
+                    0,
+                    new ModelResourceLocation(item.getRegistryName(), "inventory")
+            );
+        }
     }
 
     @SubscribeEvent
     public static void onTextureStitch(TextureStitchEvent.Pre event) {
 
-        event.getMap().registerSprite(new ResourceLocation(
-                MODID,
-                "generated/hammer_primary_iron"
-        ));
+        for (ToolTypeDefinition toolType : ToolTypeRegistry.getAllToolTypes()) {
 
-        event.getMap().registerSprite(new ResourceLocation(
-                MODID,
-                "generated/hammer_secondary_wood"
-        ));
+            String toolName = toolType.getToolType().name().toLowerCase();
+
+            for (String material : toolType.getValidMaterials().getMainMaterials()) {
+                event.getMap().registerSprite(
+                        new ResourceLocation(
+                                MODID,
+                                "generated/" + toolName + "_main_" + material
+                        )
+                );
+            }
+
+            if (toolType.getMaterialSlotCount() >= 2) {
+                for (String material : toolType.getValidMaterials().getSupportMaterials()) {
+                    event.getMap().registerSprite(
+                            new ResourceLocation(
+                                    MODID,
+                                    "generated/" + toolName + "_support_" + material
+                            )
+                    );
+                }
+            }
+        }
     }
 
     @SubscribeEvent
     public static void onModelBake(ModelBakeEvent event) {
 
-        replaceUtilityToolModel(event, "hammer");
+        for (ToolTypeDefinition toolType : ToolTypeRegistry.getAllToolTypes()) {
+            replaceUtilityToolModel(
+                    event,
+                    toolType.getToolType().name().toLowerCase()
+            );
+        }
     }
 
     private static void replaceUtilityToolModel(ModelBakeEvent event, String modelName) {
