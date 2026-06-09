@@ -1,11 +1,12 @@
 package com.SprintXXL.primitiveutilitytools.tools.recipes;
 
 import com.SprintXXL.primitivematerials.library.MaterialDefinition;
-import com.SprintXXL.primitivematerials.library.MaterialRegistry;
 import com.SprintXXL.primitivematerials.library.util.MaterialForm;
 import com.SprintXXL.primitiveutilitytools.tools.nbt.UtilityToolNBT;
 import com.SprintXXL.primitiveutilitytools.tools.registry.ModItems;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeDefinition;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeRegistry;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,19 +16,20 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import static com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStatsRegistry.hasStats;
 import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.*;
+import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.getMaterial;
 
-public class RecipeHammer extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
+public class RecipeMortar extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
-    private static final int[] MAIN_SLOTS = {0, 1, 2, 3, 4, 5};
-    private static final int SUPPORT_SLOT = 7;
+    private static final int[] MAIN_SLOTS = {1, 4};
+    private static final int[] SUPPORT_SLOTS = {3, 5, 6, 7, 8};
 
-    private static final int[] EMPTY_SLOTS = {6, 8};
+    private static final int[] EMPTY_SLOTS = {0, 2};
 
-    private static final MaterialForm MAIN_FORM = MaterialForm.INGOT;
-    private static final MaterialForm SUPPORT_FORM = MaterialForm.ROD;
+    private static final MaterialForm[] MAIN_FORMS = {MaterialForm.INGOT, MaterialForm.ITEM};
+    private static final MaterialForm SUPPORT_FORM = MaterialForm.BLOCK;
 
-    private static final Item OUTPUT = ModItems.HAMMER;
-    private static final ToolType TOOL_TYPE = ToolType.HAMMER;
+    private static final Item OUTPUT = ModItems.MORTAR;
+    private static final ToolType TOOL_TYPE = ToolType.MORTAR;
 
     @Override
     public boolean matches(InventoryCrafting inv, World worldIn) {
@@ -40,15 +42,15 @@ public class RecipeHammer extends IForgeRegistryEntry.Impl<IRecipe> implements I
             return false;
         }
 
-        ItemStack supportStack = getSupportStack(inv);
-        ItemStack mainStack = inv.getStackInSlot(MAIN_SLOTS[0]); // First Main Slot
+        ItemStack mainStack = inv.getStackInSlot(MAIN_SLOTS[0]);
+        ItemStack supportStack = inv.getStackInSlot(SUPPORT_SLOTS[0]);
 
-        if (supportStack.isEmpty() || mainStack.isEmpty()) {
+        if (mainStack.isEmpty() || supportStack.isEmpty()) {
             return false;
         }
 
-        MaterialDefinition mainMaterial = getMaterial(inv, MAIN_SLOTS[0], MAIN_FORM);
-        MaterialDefinition supportMaterial = getMaterial(inv, SUPPORT_SLOT, SUPPORT_FORM);
+        MaterialDefinition mainMaterial = getMaterial(inv, MAIN_SLOTS[0], MAIN_FORMS);
+        MaterialDefinition supportMaterial = getMaterial(inv, SUPPORT_SLOTS[0], SUPPORT_FORM);
 
         if (mainMaterial == null || supportMaterial == null) {
             return false;
@@ -62,17 +64,31 @@ public class RecipeHammer extends IForgeRegistryEntry.Impl<IRecipe> implements I
             return false;
         }
 
-        String expectedMaterial = mainMaterial.getID();
+        String expectedMainMaterial = mainMaterial.getID();
+        String expectedSupportMaterial = supportMaterial.getID();
 
         for (int slot : MAIN_SLOTS) {
 
-            MaterialDefinition slotMaterial = getMaterial(inv, slot, MAIN_FORM);
+            MaterialDefinition slotMaterial = getMaterial(inv, slot, MAIN_FORMS);
 
             if (slotMaterial == null) {
                 return false;
             }
 
-            if (!slotMaterial.getID().equals(expectedMaterial)) {
+            if (!slotMaterial.getID().equals(expectedMainMaterial)) {
+                return false;
+            }
+        }
+
+        for (int slot : SUPPORT_SLOTS) {
+
+            MaterialDefinition slotMaterial = getMaterial(inv, slot, SUPPORT_FORM);
+
+            if (slotMaterial == null) {
+                return false;
+            }
+
+            if (!slotMaterial.getID().equals(expectedSupportMaterial)) {
                 return false;
             }
         }
@@ -83,8 +99,8 @@ public class RecipeHammer extends IForgeRegistryEntry.Impl<IRecipe> implements I
     @Override
     public ItemStack getCraftingResult(InventoryCrafting inv) {
 
-        MaterialDefinition mainMaterial = getMaterial(inv, MAIN_SLOTS[0], MAIN_FORM);
-        MaterialDefinition supportMaterial = getMaterial(inv, SUPPORT_SLOT, SUPPORT_FORM);
+        MaterialDefinition mainMaterial = getMaterial(inv, MAIN_SLOTS[0], MAIN_FORMS);
+        MaterialDefinition supportMaterial = getMaterial(inv, SUPPORT_SLOTS[0], SUPPORT_FORM);
 
         if (mainMaterial == null || supportMaterial == null) {
             return ItemStack.EMPTY;
@@ -107,9 +123,5 @@ public class RecipeHammer extends IForgeRegistryEntry.Impl<IRecipe> implements I
     @Override
     public ItemStack getRecipeOutput() {
         return new ItemStack(OUTPUT);
-    }
-
-    private static ItemStack getSupportStack(InventoryCrafting inv) {
-        return inv.getStackInSlot(SUPPORT_SLOT);
     }
 }

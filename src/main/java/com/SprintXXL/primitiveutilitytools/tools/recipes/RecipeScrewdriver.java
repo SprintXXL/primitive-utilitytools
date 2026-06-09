@@ -1,7 +1,6 @@
 package com.SprintXXL.primitiveutilitytools.tools.recipes;
 
 import com.SprintXXL.primitivematerials.library.MaterialDefinition;
-import com.SprintXXL.primitivematerials.library.MaterialRegistry;
 import com.SprintXXL.primitivematerials.library.util.MaterialForm;
 import com.SprintXXL.primitiveutilitytools.tools.nbt.UtilityToolNBT;
 import com.SprintXXL.primitiveutilitytools.tools.registry.ModItems;
@@ -15,19 +14,20 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import static com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStatsRegistry.hasStats;
 import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.*;
+import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.getMaterial;
 
-public class RecipeHammer extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
+public class RecipeScrewdriver extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
-    private static final int[] MAIN_SLOTS = {0, 1, 2, 3, 4, 5};
-    private static final int SUPPORT_SLOT = 7;
+    private static final int[] MAIN_SLOTS = {0, 4};
+    private static final int SUPPORT_SLOT = 8;
 
-    private static final int[] EMPTY_SLOTS = {6, 8};
+    private static final int[] EMPTY_SLOTS = {1, 2, 3, 5, 6, 7};
 
-    private static final MaterialForm MAIN_FORM = MaterialForm.INGOT;
+    private static final MaterialForm MAIN_FORM = MaterialForm.ROD;
     private static final MaterialForm SUPPORT_FORM = MaterialForm.ROD;
 
-    private static final Item OUTPUT = ModItems.HAMMER;
-    private static final ToolType TOOL_TYPE = ToolType.HAMMER;
+    private static final Item OUTPUT = ModItems.SCREWDRIVER;
+    private static final ToolType TOOL_TYPE = ToolType.SCREWDRIVER;
 
     @Override
     public boolean matches(InventoryCrafting inv, World worldIn) {

@@ -15,19 +15,20 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import static com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStatsRegistry.hasStats;
 import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.*;
+import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.getMaterial;
 
-public class RecipeHammer extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
+public class RecipeSaw extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
-    private static final int[] MAIN_SLOTS = {0, 1, 2, 3, 4, 5};
-    private static final int SUPPORT_SLOT = 7;
+    private static final int[] MAIN_SLOTS = {3, 4};
+    private static final int SUPPORT_SLOT = 5;
 
-    private static final int[] EMPTY_SLOTS = {6, 8};
+    private static final int[] EMPTY_SLOTS = {0, 1, 2, 6, 7, 8};
 
-    private static final MaterialForm MAIN_FORM = MaterialForm.INGOT;
+    private static final MaterialForm MAIN_FORM = MaterialForm.PLATE;
     private static final MaterialForm SUPPORT_FORM = MaterialForm.ROD;
 
-    private static final Item OUTPUT = ModItems.HAMMER;
-    private static final ToolType TOOL_TYPE = ToolType.HAMMER;
+    private static final Item OUTPUT = ModItems.SAW;
+    private static final ToolType TOOL_TYPE = ToolType.SAW;
 
     @Override
     public boolean matches(InventoryCrafting inv, World worldIn) {

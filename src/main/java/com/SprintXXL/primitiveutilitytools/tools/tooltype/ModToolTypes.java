@@ -32,6 +32,7 @@ public final class ModToolTypes {
                     2,
                     new ValidMaterials(
                             Set.of(
+                                    MaterialIDs.FLINT,
                                     MaterialIDs.IRON,
                                     MaterialIDs.BRONZE
                             ),
@@ -77,10 +78,12 @@ public final class ModToolTypes {
                     2,
                     new ValidMaterials(
                             Set.of(
+                                    MaterialIDs.FLINT,
                                     MaterialIDs.IRON,
                                     MaterialIDs.BRONZE
                             ),
                             Set.of(
+                                    MaterialIDs.WOOD,
                                     MaterialIDs.OBSIDIAN
                             )
                     )

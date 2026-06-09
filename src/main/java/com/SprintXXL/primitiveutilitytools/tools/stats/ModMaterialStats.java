@@ -9,6 +9,12 @@ public final class ModMaterialStats {
     private ModMaterialStats() {}
 
     // MAIN MATERIALS \\
+    public static final MaterialStatsDefinition FLINT =
+            new MaterialStatsDefinition(
+                    MaterialIDs.FLINT,
+                    new MainMaterialStats(32)
+            );
+
     public static final MaterialStatsDefinition IRON =
             new MaterialStatsDefinition(
                     MaterialIDs.IRON,
@@ -39,12 +45,14 @@ public final class ModMaterialStats {
     public static final MaterialStatsDefinition OBSIDIAN =
             new MaterialStatsDefinition(
                     MaterialIDs.OBSIDIAN,
-                    new SupportMaterialStats(1.5)
+                    new SupportMaterialStats(3.0)
             );
 
     public static void registerMaterialStats() {
 
+        register(FLINT);
         register(IRON);
+        register(BRONZE);
 
         register(WOOD);
         register(STONE);
