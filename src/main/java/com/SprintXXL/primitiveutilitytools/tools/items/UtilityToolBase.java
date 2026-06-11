@@ -39,6 +39,9 @@ public class UtilityToolBase extends Item {
     @Override
     public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 
-        tooltip.add("Durability: " + getMaxDamage(stack));
+        int maxDurability = getMaxDamage(stack);
+        int remainingDurability = maxDurability - stack.getItemDamage();
+
+        tooltip.add("Durability: " + remainingDurability + " / " + maxDurability);
     }
 }
