@@ -1,8 +1,8 @@
 package com.SprintXXL.primitiveutilitytools.client.handler;
 
+import com.SprintXXL.primitivematter.library.substances.Substance;
 import com.SprintXXL.primitiveutilitytools.client.render.ModelUtilityTool;
 import com.SprintXXL.primitiveutilitytools.tools.registry.ModItems;
-import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeDefinition;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeRegistry;
 import net.minecraft.client.renderer.block.model.IBakedModel;
@@ -47,21 +47,21 @@ public class ModelHandler {
 
             String toolName = toolType.getToolType().name().toLowerCase();
 
-            for (String material : toolType.getValidMaterials().getMainMaterials()) {
+            for (Substance material : toolType.getValidMaterials().getMainMaterials()) {
                 event.getMap().registerSprite(
                         new ResourceLocation(
                                 MODID,
-                                "generated/" + toolName + "_main_" + material
+                                "generated/" + toolName + "_main_" + material.toString()
                         )
                 );
             }
 
             if (toolType.getMaterialSlotCount() >= 2) {
-                for (String material : toolType.getValidMaterials().getSupportMaterials()) {
+                for (Substance material : toolType.getValidMaterials().getSupportMaterials()) {
                     event.getMap().registerSprite(
                             new ResourceLocation(
                                     MODID,
-                                    "generated/" + toolName + "_support_" + material
+                                    "generated/" + toolName + "_support_" + material.toString()
                             )
                     );
                 }

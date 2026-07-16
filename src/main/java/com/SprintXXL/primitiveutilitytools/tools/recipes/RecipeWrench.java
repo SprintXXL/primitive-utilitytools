@@ -1,8 +1,7 @@
 package com.SprintXXL.primitiveutilitytools.tools.recipes;
 
-import com.SprintXXL.primitivematerials.library.MaterialDefinition;
-import com.SprintXXL.primitivematerials.library.MaterialRegistry;
-import com.SprintXXL.primitivematerials.library.util.MaterialForm;
+import com.SprintXXL.primitivematter.library.substances.Substance;
+import com.SprintXXL.primitivematter.library.substances.states.solid.forms.industrial.IndustrialForm;
 import com.SprintXXL.primitiveutilitytools.tools.nbt.UtilityToolNBT;
 import com.SprintXXL.primitiveutilitytools.tools.registry.ModItems;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
@@ -15,7 +14,6 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import static com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStatsRegistry.hasStats;
 import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.*;
-import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.getMaterial;
 
 public class RecipeWrench extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
@@ -24,8 +22,8 @@ public class RecipeWrench extends IForgeRegistryEntry.Impl<IRecipe> implements I
 
     private static final int[] EMPTY_SLOTS = {1, 6, 8};
 
-    private static final MaterialForm MAIN_FORM = MaterialForm.PLATE;
-    private static final MaterialForm SUPPORT_FORM = MaterialForm.PLATE;
+    private static final IndustrialForm MAIN_FORM = IndustrialForm.PLATE;
+    private static final IndustrialForm SUPPORT_FORM = IndustrialForm.PLATE;
 
     private static final Item OUTPUT = ModItems.WRENCH;
     private static final ToolType TOOL_TYPE = ToolType.WRENCH;
@@ -48,8 +46,8 @@ public class RecipeWrench extends IForgeRegistryEntry.Impl<IRecipe> implements I
             return false;
         }
 
-        MaterialDefinition mainMaterial = getMaterial(inv, MAIN_SLOTS[0], MAIN_FORM);
-        MaterialDefinition supportMaterial = getMaterial(inv, SUPPORT_SLOT, SUPPORT_FORM);
+        Substance mainMaterial = getMaterial(inv, MAIN_SLOTS[0], MAIN_FORM);
+        Substance supportMaterial = getMaterial(inv, SUPPORT_SLOT, SUPPORT_FORM);
 
         if (mainMaterial == null || supportMaterial == null) {
             return false;
@@ -67,7 +65,7 @@ public class RecipeWrench extends IForgeRegistryEntry.Impl<IRecipe> implements I
 
         for (int slot : MAIN_SLOTS) {
 
-            MaterialDefinition slotMaterial = getMaterial(inv, slot, MAIN_FORM);
+            Substance slotMaterial = getMaterial(inv, slot, MAIN_FORM);
 
             if (slotMaterial == null) {
                 return false;
@@ -84,8 +82,8 @@ public class RecipeWrench extends IForgeRegistryEntry.Impl<IRecipe> implements I
     @Override
     public ItemStack getCraftingResult(InventoryCrafting inv) {
 
-        MaterialDefinition mainMaterial = getMaterial(inv, MAIN_SLOTS[0], MAIN_FORM);
-        MaterialDefinition supportMaterial = getMaterial(inv, SUPPORT_SLOT, SUPPORT_FORM);
+        Substance mainMaterial = getMaterial(inv, MAIN_SLOTS[0], MAIN_FORM);
+        Substance supportMaterial = getMaterial(inv, SUPPORT_SLOT, SUPPORT_FORM);
 
         if (mainMaterial == null || supportMaterial == null) {
             return ItemStack.EMPTY;

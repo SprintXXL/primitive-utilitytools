@@ -1,13 +1,14 @@
 package com.SprintXXL.primitiveutilitytools.util;
 
-import com.SprintXXL.primitivematerials.library.MaterialDefinition;
-import com.SprintXXL.primitivematerials.library.MaterialRegistry;
-import com.SprintXXL.primitivematerials.library.util.MaterialForm;
+import com.SprintXXL.primitivematter.library.substances.Substance;
+import com.SprintXXL.primitivematter.library.substances.states.solid.forms.SolidForm;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeDefinition;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeRegistry;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
+
+import static com.SprintXXL.primitivematter.library.substances.registry.SubstanceRegistry.getSubstanceFromItem;
 
 public final class RecipeHelper {
 
@@ -28,32 +29,28 @@ public final class RecipeHelper {
         return true;
     }
 
-    public static MaterialDefinition getMaterial(InventoryCrafting inv, int slot, MaterialForm... forms) {
+    public static Substance getMaterial(InventoryCrafting inv, int slot, SolidForm... forms) {
 
         ItemStack stack = inv.getStackInSlot(slot);
 
-        if (stack.isEmpty()) {
-            return null;
-        }
+        for (SolidForm form : forms) {
 
-        for (MaterialForm form : forms) {
+            Substance substance = getSubstanceFromItem(stack, form);
 
-            MaterialDefinition material = MaterialRegistry.getMaterialFromStack(stack, form);
-
-            if (material != null) {
-                return material;
+            if (substance != null) {
+                return substance;
             }
         }
 
         return null;
     }
 
-    public static boolean isValidMaterials(ToolType toolType, MaterialDefinition mainMaterial, MaterialDefinition supportMaterial) {
+    public static boolean isValidMaterials(ToolType toolType, Substance mainMaterial, Substance supportMaterial) {
 
         ToolTypeDefinition definition = ToolTypeRegistry.getToolType(toolType);
 
-        if (!definition.getValidMaterials().isValidMainMaterial(mainMaterial.getID()) ||
-                !definition.getValidMaterials().isValidSupportMaterial(supportMaterial.getID())) {
+        if (!definition.getValidMaterials().isValidMainMaterial(mainMaterial) ||
+                !definition.getValidMaterials().isValidSupportMaterial(supportMaterial)) {
             return false;
         }
 

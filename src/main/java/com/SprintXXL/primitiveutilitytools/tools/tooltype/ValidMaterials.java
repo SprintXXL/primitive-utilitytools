@@ -1,33 +1,35 @@
 package com.SprintXXL.primitiveutilitytools.tools.tooltype;
 
+import com.SprintXXL.primitivematter.library.substances.Substance;
+
 import java.util.Set;
 
 public class ValidMaterials {
 
-    private final Set<String> mainMaterials;
-    private final Set<String> supportMaterials;
+    private final Set<Substance> mainMaterials;
+    private final Set<Substance> supportMaterials;
 
     public ValidMaterials(
-            Set<String> mainMaterials,
-            Set<String> supportMaterials
+            Set<Substance> mainMaterials,
+            Set<Substance> supportMaterials
     ) {
         this.mainMaterials = mainMaterials;
         this.supportMaterials = supportMaterials;
     }
 
-    public Set<String> getMainMaterials() {
+    public Set<Substance> getMainMaterials() {
         return mainMaterials;
     }
 
-    public Set<String> getSupportMaterials() {
+    public Set<Substance> getSupportMaterials() {
         return supportMaterials;
     }
 
-    public boolean isValidMainMaterial(String material) {
+    public boolean isValidMainMaterial(Substance material) {
         return mainMaterials.contains(material);
     }
 
-    public boolean isValidSupportMaterial(String material) {
+    public boolean isValidSupportMaterial(Substance material) {
         return supportMaterials.contains(material);
     }
 }

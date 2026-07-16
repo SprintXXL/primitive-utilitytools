@@ -1,6 +1,6 @@
 package com.SprintXXL.primitiveutilitytools.tools.stats;
 
-import com.SprintXXL.primitivematerials.library.MaterialIDs;
+import com.SprintXXL.primitivematter.library.substances.definitions.ModSubstances;
 
 import static com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStatsRegistry.register;
 
@@ -11,19 +11,19 @@ public final class ModMaterialStats {
     // MAIN MATERIALS \\
     public static final MaterialStatsDefinition FLINT =
             new MaterialStatsDefinition(
-                    MaterialIDs.FLINT,
+                    ModSubstances.FLINT,
                     new MainMaterialStats(32)
             );
 
     public static final MaterialStatsDefinition IRON =
             new MaterialStatsDefinition(
-                    MaterialIDs.IRON,
+                    ModSubstances.IRON,
                     new MainMaterialStats(64)
             );
 
     public static final MaterialStatsDefinition BRONZE =
             new MaterialStatsDefinition(
-                    MaterialIDs.BRONZE,
+                    ModSubstances.BRONZE,
                     new MainMaterialStats(128)
             );
 
@@ -34,17 +34,17 @@ public final class ModMaterialStats {
     // SUPPORT MATERIALS \\
     public static final MaterialStatsDefinition WOOD =
             new MaterialStatsDefinition(
-                    MaterialIDs.WOOD,
+                    ModSubstances.WOOD,
                     new SupportMaterialStats(1.0)
             );
     public static final MaterialStatsDefinition STONE =
             new MaterialStatsDefinition(
-                    MaterialIDs.STONE,
+                    ModSubstances.STONE,
                     new SupportMaterialStats(1.0)
             );
     public static final MaterialStatsDefinition OBSIDIAN =
             new MaterialStatsDefinition(
-                    MaterialIDs.OBSIDIAN,
+                    ModSubstances.OBSIDIAN,
                     new SupportMaterialStats(3.0)
             );
 

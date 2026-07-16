@@ -11,7 +11,7 @@ public final class MaterialStatsRegistry {
     new HashMap<>();
 
     public static void register(MaterialStatsDefinition stats) {
-        STATS.put(stats.getID(), stats);
+        STATS.put(stats.getID().getID(), stats);
     }
 
     public static MaterialStats getStats(String materialID) {

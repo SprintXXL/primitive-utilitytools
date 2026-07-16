@@ -1,7 +1,8 @@
 package com.SprintXXL.primitiveutilitytools.tools.recipes;
 
-import com.SprintXXL.primitivematerials.library.MaterialDefinition;
-import com.SprintXXL.primitivematerials.library.util.MaterialForm;
+import com.SprintXXL.primitivematter.library.substances.Substance;
+import com.SprintXXL.primitivematter.library.substances.states.solid.forms.basic.BasicForm;
+import com.SprintXXL.primitivematter.library.substances.states.solid.forms.industrial.IndustrialForm;
 import com.SprintXXL.primitiveutilitytools.tools.nbt.UtilityToolNBT;
 import com.SprintXXL.primitiveutilitytools.tools.registry.ModItems;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
@@ -24,8 +25,8 @@ public class RecipeKnife extends IForgeRegistryEntry.Impl<IRecipe> implements IR
 
     private static final int[] EMPTY_SLOTS = {0, 1, 2, 3, 5, 6, 8};
 
-    private static final MaterialForm MAIN_FORM = MaterialForm.INGOT;
-    private static final MaterialForm SUPPORT_FORM = MaterialForm.ROD;
+    private static final BasicForm MAIN_FORM = BasicForm.INGOT;
+    private static final IndustrialForm SUPPORT_FORM = IndustrialForm.ROD;
 
     private static final Item OUTPUT = ModItems.KNIFE;
     private static final ToolType TOOL_TYPE = ToolType.KNIFE;
@@ -48,11 +49,11 @@ public class RecipeKnife extends IForgeRegistryEntry.Impl<IRecipe> implements IR
             return false;
         }
 
-        MaterialDefinition mainMaterial = getMaterial(inv, MAIN_SLOT, MAIN_FORM);
-        MaterialDefinition supportMaterial = getMaterial(inv, SUPPORT_SLOT, SUPPORT_FORM);
+        Substance mainMaterial = getMaterial(inv, MAIN_SLOT, MAIN_FORM);
+        Substance supportMaterial = getMaterial(inv, SUPPORT_SLOT, SUPPORT_FORM);
 
         if (mainMaterial == null) {
-            mainMaterial = getMaterial(inv, MAIN_SLOT, MaterialForm.ITEM);
+            mainMaterial = getMaterial(inv, MAIN_SLOT, BasicForm.SUBSTANCE_ITEM);
         }
 
         if (mainMaterial == null || supportMaterial == null) {
@@ -73,11 +74,11 @@ public class RecipeKnife extends IForgeRegistryEntry.Impl<IRecipe> implements IR
     @Override
     public ItemStack getCraftingResult(InventoryCrafting inv) {
 
-        MaterialDefinition mainMaterial = getMaterial(inv, MAIN_SLOT, MAIN_FORM);
-        MaterialDefinition supportMaterial = getMaterial(inv, SUPPORT_SLOT, SUPPORT_FORM);
+        Substance mainMaterial = getMaterial(inv, MAIN_SLOT, MAIN_FORM);
+        Substance supportMaterial = getMaterial(inv, SUPPORT_SLOT, SUPPORT_FORM);
 
         if (mainMaterial == null) {
-            mainMaterial = getMaterial(inv, MAIN_SLOT, MaterialForm.ITEM);
+            mainMaterial = getMaterial(inv, MAIN_SLOT, BasicForm.SUBSTANCE_ITEM);
         }
 
         if (mainMaterial == null || supportMaterial == null) {

@@ -32,14 +32,16 @@ public class UtilityToolRenderResolver {
                 mainMaterial = definition.getValidMaterials()
                         .getMainMaterials()
                         .iterator()
-                        .next();
+                        .next()
+                        .toString();
             }
 
             if (materialSlotCount >= 2 && "unknown".equals(supportMaterial)) {
                 supportMaterial = definition.getValidMaterials()
                         .getSupportMaterials()
                         .iterator()
-                        .next();
+                        .next()
+                        .toString();;
             }
         }
 

@@ -1,19 +1,21 @@
 package com.SprintXXL.primitiveutilitytools.tools.stats;
 
+import com.SprintXXL.primitivematter.library.substances.Substance;
+
 public class MaterialStatsDefinition {
 
-    private final String id;
+    private final Substance id;
     private final MaterialStats stats;
 
     public MaterialStatsDefinition(
-            String id,
+            Substance id,
             MaterialStats stats
     ) {
         this.id = id;
         this.stats = stats;
     }
 
-    public String getID() {
+    public Substance getID() {
         return id;
     }
 

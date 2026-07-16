@@ -1,6 +1,6 @@
 package com.SprintXXL.primitiveutilitytools.tools.tooltype;
 
-import com.SprintXXL.primitivematerials.library.MaterialIDs;
+import com.SprintXXL.primitivematter.library.substances.definitions.ModSubstances;
 
 import java.util.Set;
 
@@ -16,12 +16,12 @@ public final class ModToolTypes {
                     2,
                     new ValidMaterials(
                             Set.of(
-                                    MaterialIDs.IRON,
-                                    MaterialIDs.BRONZE
+                                    ModSubstances.IRON,
+                                    ModSubstances.BRONZE
                             ),
                             Set.of(
-                                    MaterialIDs.WOOD,
-                                    MaterialIDs.OBSIDIAN
+                                    ModSubstances.WOOD,
+                                    ModSubstances.OBSIDIAN
                             )
                     )
             );
@@ -32,13 +32,13 @@ public final class ModToolTypes {
                     2,
                     new ValidMaterials(
                             Set.of(
-                                    MaterialIDs.FLINT,
-                                    MaterialIDs.IRON,
-                                    MaterialIDs.BRONZE
+                                    ModSubstances.FLINT,
+                                    ModSubstances.IRON,
+                                    ModSubstances.BRONZE
                             ),
                             Set.of(
-                                    MaterialIDs.STONE,
-                                    MaterialIDs.OBSIDIAN
+                                    ModSubstances.STONE,
+                                    ModSubstances.OBSIDIAN
                             )
                     )
             );
@@ -49,11 +49,11 @@ public final class ModToolTypes {
                     2,
                     new ValidMaterials(
                             Set.of(
-                                    MaterialIDs.IRON,
-                                    MaterialIDs.BRONZE
+                                    ModSubstances.IRON,
+                                    ModSubstances.BRONZE
                             ),
                             Set.of(
-                                    MaterialIDs.OBSIDIAN
+                                    ModSubstances.OBSIDIAN
                             )
                     )
             );
@@ -64,11 +64,11 @@ public final class ModToolTypes {
                     2,
                     new ValidMaterials(
                             Set.of(
-                                    MaterialIDs.IRON,
-                                    MaterialIDs.BRONZE
+                                    ModSubstances.IRON,
+                                    ModSubstances.BRONZE
                             ),
                             Set.of(
-                                    MaterialIDs.OBSIDIAN
+                                    ModSubstances.OBSIDIAN
                             )
                     )
             );
@@ -78,13 +78,13 @@ public final class ModToolTypes {
                     2,
                     new ValidMaterials(
                             Set.of(
-                                    MaterialIDs.FLINT,
-                                    MaterialIDs.IRON,
-                                    MaterialIDs.BRONZE
+                                    ModSubstances.FLINT,
+                                    ModSubstances.IRON,
+                                    ModSubstances.BRONZE
                             ),
                             Set.of(
-                                    MaterialIDs.WOOD,
-                                    MaterialIDs.OBSIDIAN
+                                    ModSubstances.WOOD,
+                                    ModSubstances.OBSIDIAN
                             )
                     )
             );
@@ -94,11 +94,11 @@ public final class ModToolTypes {
                     2,
                     new ValidMaterials(
                             Set.of(
-                                    MaterialIDs.IRON,
-                                    MaterialIDs.BRONZE
+                                    ModSubstances.IRON,
+                                    ModSubstances.BRONZE
                             ),
                             Set.of(
-                                    MaterialIDs.OBSIDIAN
+                                    ModSubstances.OBSIDIAN
                             )
                     )
             );
@@ -109,11 +109,11 @@ public final class ModToolTypes {
                     2,
                     new ValidMaterials(
                             Set.of(
-                                    MaterialIDs.IRON,
-                                    MaterialIDs.BRONZE
+                                    ModSubstances.IRON,
+                                    ModSubstances.BRONZE
                             ),
                             Set.of(
-                                    MaterialIDs.OBSIDIAN
+                                    ModSubstances.OBSIDIAN
                             )
                     )
             );
@@ -124,11 +124,11 @@ public final class ModToolTypes {
                     2,
                     new ValidMaterials(
                             Set.of(
-                                    MaterialIDs.IRON,
-                                    MaterialIDs.BRONZE
+                                    ModSubstances.IRON,
+                                    ModSubstances.BRONZE
                             ),
                             Set.of(
-                                    MaterialIDs.OBSIDIAN
+                                    ModSubstances.OBSIDIAN
                             )
                     )
             );

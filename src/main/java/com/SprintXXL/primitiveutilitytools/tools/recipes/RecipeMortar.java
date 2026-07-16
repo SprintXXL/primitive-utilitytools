@@ -1,7 +1,7 @@
 package com.SprintXXL.primitiveutilitytools.tools.recipes;
 
-import com.SprintXXL.primitivematerials.library.MaterialDefinition;
-import com.SprintXXL.primitivematerials.library.util.MaterialForm;
+import com.SprintXXL.primitivematter.library.substances.Substance;
+import com.SprintXXL.primitivematter.library.substances.states.solid.forms.basic.BasicForm;
 import com.SprintXXL.primitiveutilitytools.tools.nbt.UtilityToolNBT;
 import com.SprintXXL.primitiveutilitytools.tools.registry.ModItems;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
@@ -14,7 +14,6 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import static com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStatsRegistry.hasStats;
 import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.*;
-import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.getMaterial;
 
 public class RecipeMortar extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
@@ -23,8 +22,8 @@ public class RecipeMortar extends IForgeRegistryEntry.Impl<IRecipe> implements I
 
     private static final int[] EMPTY_SLOTS = {0, 2};
 
-    private static final MaterialForm[] MAIN_FORMS = {MaterialForm.INGOT, MaterialForm.ITEM};
-    private static final MaterialForm SUPPORT_FORM = MaterialForm.BLOCK;
+    private static final BasicForm[] MAIN_FORMS = {BasicForm.INGOT, BasicForm.SUBSTANCE_ITEM};
+    private static final BasicForm SUPPORT_FORM = BasicForm.SUBSTANCE_BLOCK;
 
     private static final Item OUTPUT = ModItems.MORTAR;
     private static final ToolType TOOL_TYPE = ToolType.MORTAR;
@@ -47,8 +46,8 @@ public class RecipeMortar extends IForgeRegistryEntry.Impl<IRecipe> implements I
             return false;
         }
 
-        MaterialDefinition mainMaterial = getMaterial(inv, MAIN_SLOTS[0], MAIN_FORMS);
-        MaterialDefinition supportMaterial = getMaterial(inv, SUPPORT_SLOTS[0], SUPPORT_FORM);
+        Substance mainMaterial = getMaterial(inv, MAIN_SLOTS[0], MAIN_FORMS);
+        Substance supportMaterial = getMaterial(inv, SUPPORT_SLOTS[0], SUPPORT_FORM);
 
         if (mainMaterial == null || supportMaterial == null) {
             return false;
@@ -67,7 +66,7 @@ public class RecipeMortar extends IForgeRegistryEntry.Impl<IRecipe> implements I
 
         for (int slot : MAIN_SLOTS) {
 
-            MaterialDefinition slotMaterial = getMaterial(inv, slot, MAIN_FORMS);
+            Substance slotMaterial = getMaterial(inv, slot, MAIN_FORMS);
 
             if (slotMaterial == null) {
                 return false;
@@ -80,7 +79,7 @@ public class RecipeMortar extends IForgeRegistryEntry.Impl<IRecipe> implements I
 
         for (int slot : SUPPORT_SLOTS) {
 
-            MaterialDefinition slotMaterial = getMaterial(inv, slot, SUPPORT_FORM);
+            Substance slotMaterial = getMaterial(inv, slot, SUPPORT_FORM);
 
             if (slotMaterial == null) {
                 return false;
@@ -97,8 +96,8 @@ public class RecipeMortar extends IForgeRegistryEntry.Impl<IRecipe> implements I
     @Override
     public ItemStack getCraftingResult(InventoryCrafting inv) {
 
-        MaterialDefinition mainMaterial = getMaterial(inv, MAIN_SLOTS[0], MAIN_FORMS);
-        MaterialDefinition supportMaterial = getMaterial(inv, SUPPORT_SLOTS[0], SUPPORT_FORM);
+        Substance mainMaterial = getMaterial(inv, MAIN_SLOTS[0], MAIN_FORMS);
+        Substance supportMaterial = getMaterial(inv, SUPPORT_SLOTS[0], SUPPORT_FORM);
 
         if (mainMaterial == null || supportMaterial == null) {
             return ItemStack.EMPTY;
