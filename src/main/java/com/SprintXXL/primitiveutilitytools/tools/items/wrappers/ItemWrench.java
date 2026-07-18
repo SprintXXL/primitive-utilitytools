@@ -1,7 +1,7 @@
 package com.SprintXXL.primitiveutilitytools.tools.items.wrappers;
 
 import com.SprintXXL.primitiveutilitytools.tools.items.UtilityToolBase;
-import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.definitions.ModToolTypes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -10,7 +10,7 @@ import net.minecraft.world.IBlockAccess;
 public class ItemWrench extends UtilityToolBase {
 
     public ItemWrench() {
-        super("wrench", ToolType.WRENCH);
+        super("wrench", ModToolTypes.WRENCH);
     }
 
     @Override

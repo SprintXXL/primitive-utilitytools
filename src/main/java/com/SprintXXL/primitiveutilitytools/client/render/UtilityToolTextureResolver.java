@@ -8,7 +8,7 @@ public class UtilityToolTextureResolver {
 
         return new ResourceLocation(
                 "primitiveutilitytools",
-                "generated/" + data.toolType.name().toLowerCase() + "_" + layerType + "_" + getMaterialID(data, layerType)
+                "generated/" + data.toolType + "_" + layerType + "_" + getMaterialID(data, layerType)
         );
     }
 

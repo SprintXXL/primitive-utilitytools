@@ -1,11 +1,13 @@
 package com.SprintXXL.primitiveutilitytools;
 
-import com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStatsRegistry;
-import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeRegistry;
+import com.SprintXXL.primitiveutilitytools.tools.stats.registry.MaterialStatsRegistry;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.registry.ToolTypeRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import static com.SprintXXL.primitiveutilitytools.Reference.*;
+import static com.SprintXXL.primitiveutilitytools.ascent.UtilityToolsDefinitionProvider.initUtilityToolsDefinitionProvider;
+import static com.SprintXXL.primitiveutilitytools.ascent.UtilityToolsRecipes.initUtilityToolsRecipes;
 
 @Mod(modid = MODID, name = NAME, version = VERSION)
 public class PrimitiveUtilityTools {
@@ -13,7 +15,13 @@ public class PrimitiveUtilityTools {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
 
-        MaterialStatsRegistry.init();
-        ToolTypeRegistry.init();
+        MaterialStatsRegistry.initMaterialStatsRegistry();
+        ToolTypeRegistry.initToolTypeRegistry();
+
+        // ARRI \\
+        initUtilityToolsRecipes();
+
+        // HUB \\
+        initUtilityToolsDefinitionProvider();
     }
 }

@@ -6,6 +6,7 @@ import com.SprintXXL.primitivematter.library.substances.states.solid.forms.indus
 import com.SprintXXL.primitiveutilitytools.tools.nbt.UtilityToolNBT;
 import com.SprintXXL.primitiveutilitytools.tools.registry.ModItems;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.definitions.ModToolTypes;
 import com.SprintXXL.primitiveutilitytools.util.RecipeHelper;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
@@ -14,7 +15,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-import static com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStatsRegistry.hasStats;
+import static com.SprintXXL.primitiveutilitytools.tools.stats.registry.MaterialStatsRegistry.hasStats;
 import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.getMaterial;
 import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.isValidMaterials;
 
@@ -29,7 +30,7 @@ public class RecipeKnife extends IForgeRegistryEntry.Impl<IRecipe> implements IR
     private static final IndustrialForm SUPPORT_FORM = IndustrialForm.ROD;
 
     private static final Item OUTPUT = ModItems.KNIFE;
-    private static final ToolType TOOL_TYPE = ToolType.KNIFE;
+    private static final ToolType TOOL_TYPE = ModToolTypes.KNIFE;
 
     @Override
     public boolean matches(InventoryCrafting inv, World worldIn) {

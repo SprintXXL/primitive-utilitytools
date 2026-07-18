@@ -1,4 +1,4 @@
-package com.SprintXXL.primitiveutilitytools.tools.tooltype;
+package com.SprintXXL.primitiveutilitytools.tools.tooltype.shared;
 
 import com.SprintXXL.primitivematter.library.substances.Substance;
 

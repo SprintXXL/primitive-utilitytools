@@ -1,6 +1,6 @@
-package com.SprintXXL.primitiveutilitytools.tools.stats;
+package com.SprintXXL.primitiveutilitytools.tools.stats.data;
 
-public class SupportMaterialStats implements MaterialStats {
+public class SupportMaterialStats implements MaterialStatsData {
 
     private final double durabilityMultiplier;
 

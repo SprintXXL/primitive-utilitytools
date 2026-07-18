@@ -1,7 +1,7 @@
 package com.SprintXXL.primitiveutilitytools.tools.registry;
 
 import com.SprintXXL.primitiveutilitytools.tools.items.wrappers.*;
-import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.definitions.ToolTypeIDs;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -33,25 +33,25 @@ public class ModItems {
         );
     }
 
-    public static Item getToolItem(ToolType toolType) {
+    public static Item getToolItem(String id) {
 
-        switch (toolType) {
+        switch (id) {
 
-            case HAMMER:
+            case ToolTypeIDs.HAMMER:
                 return HAMMER;
-            case MORTAR:
+            case ToolTypeIDs.MORTAR:
                 return MORTAR;
-            case SAW:
+            case ToolTypeIDs.SAW:
                 return SAW;
-            case SCREWDRIVER:
+            case ToolTypeIDs.SCREWDRIVER:
                 return SCREWDRIVER;
-            case KNIFE:
+            case ToolTypeIDs.KNIFE:
                 return KNIFE;
-            case FILE:
+            case ToolTypeIDs.FILE:
                 return FILE;
-            case CROWBAR:
+            case ToolTypeIDs.CROWBAR:
                 return CROWBAR;
-            case WRENCH:
+            case ToolTypeIDs.WRENCH:
                 return WRENCH;
 
             default:

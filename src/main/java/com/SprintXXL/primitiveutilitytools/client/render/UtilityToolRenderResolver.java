@@ -1,26 +1,27 @@
 package com.SprintXXL.primitiveutilitytools.client.render;
 
-import com.SprintXXL.primitiveutilitytools.tools.items.UtilityToolBase;
 import com.SprintXXL.primitiveutilitytools.tools.nbt.UtilityToolNBT;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
-import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeDefinition;
-import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeRegistry;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.registry.ToolTypeRegistry;
 import net.minecraft.item.ItemStack;
 
 public class UtilityToolRenderResolver {
 
     public static UtilityToolRenderData resolve(ItemStack stack) {
 
-        ToolType toolType = UtilityToolNBT.getToolType(stack);
+        String toolType = UtilityToolNBT.getToolType(stack);
 
-        if (toolType == ToolType.UNKNOWN && stack.getItem() instanceof UtilityToolBase tool) {
-            toolType = tool.getToolType();
-        }
-
-        ToolTypeDefinition definition = ToolTypeRegistry.getToolType(toolType);
+        ToolType definition = ToolTypeRegistry.getToolType(toolType);
 
         String mainMaterial = UtilityToolNBT.getMainMaterial(stack);
         String supportMaterial = UtilityToolNBT.getSupportMaterial(stack);
+
+        System.out.println(
+                "Render toolType=" + toolType
+                        + ", definition=" + definition
+                        + ", main=" + mainMaterial
+                        + ", support=" + supportMaterial
+        );
 
         int materialSlotCount = 1;
 
@@ -33,7 +34,7 @@ public class UtilityToolRenderResolver {
                         .getMainMaterials()
                         .iterator()
                         .next()
-                        .toString();
+                        .getID();
             }
 
             if (materialSlotCount >= 2 && "unknown".equals(supportMaterial)) {
@@ -41,7 +42,7 @@ public class UtilityToolRenderResolver {
                         .getSupportMaterials()
                         .iterator()
                         .next()
-                        .toString();;
+                        .getID();;
             }
         }
 

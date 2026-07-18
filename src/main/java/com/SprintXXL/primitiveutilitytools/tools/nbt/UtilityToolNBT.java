@@ -31,26 +31,22 @@ public final class UtilityToolNBT {
 
         NBTTagCompound tag = stack.getOrCreateSubCompound(TOOL_NBT);
 
-        tag.setString(TOOL_TYPE, toolType.name());
+        tag.setString(TOOL_TYPE, toolType.getID());
     }
 
-    public static ToolType getToolType(ItemStack stack) {
+    public static String getToolType(ItemStack stack) {
 
         if (!stack.hasTagCompound()) {
-            return ToolType.UNKNOWN;
+            return null;
         }
 
         NBTTagCompound tag = stack.getSubCompound(TOOL_NBT);
 
         if (tag == null || !tag.hasKey(TOOL_TYPE)) {
-            return ToolType.UNKNOWN;
+            return null;
         }
 
-        try {
-            return ToolType.valueOf(tag.getString(TOOL_TYPE));
-        } catch (IllegalArgumentException e) {
-            return ToolType.UNKNOWN;
-        }
+        return tag.getString(TOOL_TYPE);
     }
 
     public static void setMainMaterial(ItemStack stack, String material) {

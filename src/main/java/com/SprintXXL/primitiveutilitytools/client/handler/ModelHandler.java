@@ -3,8 +3,8 @@ package com.SprintXXL.primitiveutilitytools.client.handler;
 import com.SprintXXL.primitivematter.library.substances.Substance;
 import com.SprintXXL.primitiveutilitytools.client.render.ModelUtilityTool;
 import com.SprintXXL.primitiveutilitytools.tools.registry.ModItems;
-import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeDefinition;
-import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeRegistry;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.registry.ToolTypeRegistry;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -24,9 +24,9 @@ public class ModelHandler {
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
 
-        for (ToolTypeDefinition definition : ToolTypeRegistry.getAllToolTypes()) {
+        for (ToolType definition : ToolTypeRegistry.getAllToolTypes()) {
 
-            Item item = ModItems.getToolItem(definition.getToolType());
+            Item item = ModItems.getToolItem(definition.getID());
 
             if (item == null) {
                 continue;
@@ -43,15 +43,15 @@ public class ModelHandler {
     @SubscribeEvent
     public static void onTextureStitch(TextureStitchEvent.Pre event) {
 
-        for (ToolTypeDefinition toolType : ToolTypeRegistry.getAllToolTypes()) {
+        for (ToolType toolType : ToolTypeRegistry.getAllToolTypes()) {
 
-            String toolName = toolType.getToolType().name().toLowerCase();
+            String toolName = toolType.getID();
 
             for (Substance material : toolType.getValidMaterials().getMainMaterials()) {
                 event.getMap().registerSprite(
                         new ResourceLocation(
                                 MODID,
-                                "generated/" + toolName + "_main_" + material.toString()
+                                "generated/" + toolName + "_main_" + material.getID()
                         )
                 );
             }
@@ -61,7 +61,7 @@ public class ModelHandler {
                     event.getMap().registerSprite(
                             new ResourceLocation(
                                     MODID,
-                                    "generated/" + toolName + "_support_" + material.toString()
+                                    "generated/" + toolName + "_support_" + material.getID()
                             )
                     );
                 }
@@ -72,10 +72,10 @@ public class ModelHandler {
     @SubscribeEvent
     public static void onModelBake(ModelBakeEvent event) {
 
-        for (ToolTypeDefinition toolType : ToolTypeRegistry.getAllToolTypes()) {
+        for (ToolType toolType : ToolTypeRegistry.getAllToolTypes()) {
             replaceUtilityToolModel(
                     event,
-                    toolType.getToolType().name().toLowerCase()
+                    toolType.getID()
             );
         }
     }

@@ -1,14 +1,34 @@
 package com.SprintXXL.primitiveutilitytools.tools.tooltype;
 
-public enum ToolType {
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.shared.ValidMaterials;
+import com.sprintxxl.ascenthub.definitions.AscentDefinition;
 
-    HAMMER,
-    MORTAR,
-    SAW,
-    SCREWDRIVER,
-    KNIFE,
-    FILE,
-    CROWBAR,
-    WRENCH,
-    UNKNOWN
+public class ToolType implements AscentDefinition {
+
+    private final String id;
+    private final int materialSlotCount;
+    private final ValidMaterials validMaterials;
+
+    public ToolType(
+            String id,
+            int materialSlotCount,
+            ValidMaterials validMaterials
+    ) {
+        this.id = id;
+        this.materialSlotCount = materialSlotCount;
+        this.validMaterials = validMaterials;
+    }
+
+    @Override
+    public String getID() {
+        return id;
+    }
+
+    public int getMaterialSlotCount() {
+        return materialSlotCount;
+    }
+
+    public ValidMaterials getValidMaterials() {
+        return validMaterials;
+    }
 }

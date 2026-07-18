@@ -1,18 +1,31 @@
-package com.SprintXXL.primitiveutilitytools.tools.tooltype;
+package com.SprintXXL.primitiveutilitytools.tools.tooltype.definitions;
 
 import com.SprintXXL.primitivematter.library.substances.definitions.ModSubstances;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.shared.ValidMaterials;
+import com.sprintxxl.ascenthub.definitions.DefinitionRegistrar;
 
 import java.util.Set;
-
-import static com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeRegistry.register;
 
 public final class ModToolTypes {
 
     private ModToolTypes() {}
 
-    public static final ToolTypeDefinition HAMMER =
-            new ToolTypeDefinition(
-                    ToolType.HAMMER,
+    public static void initToolTypeDefinitions(DefinitionRegistrar<ToolType> registrar) {
+
+        registrar.register(HAMMER);
+        registrar.register(MORTAR);
+        registrar.register(SAW);
+        registrar.register(SCREWDRIVER);
+        registrar.register(KNIFE);
+        registrar.register(FILE);
+        registrar.register(CROWBAR);
+        registrar.register(WRENCH);
+    }
+
+    public static final ToolType HAMMER =
+            new ToolType(
+                    ToolTypeIDs.HAMMER,
                     2,
                     new ValidMaterials(
                             Set.of(
@@ -26,9 +39,9 @@ public final class ModToolTypes {
                     )
             );
 
-    public static final ToolTypeDefinition MORTAR =
-            new ToolTypeDefinition(
-                    ToolType.MORTAR,
+    public static final ToolType MORTAR =
+            new ToolType(
+                    ToolTypeIDs.MORTAR,
                     2,
                     new ValidMaterials(
                             Set.of(
@@ -43,9 +56,9 @@ public final class ModToolTypes {
                     )
             );
 
-    public static final ToolTypeDefinition SAW =
-            new ToolTypeDefinition(
-                    ToolType.SAW,
+    public static final ToolType SAW =
+            new ToolType(
+                    ToolTypeIDs.SAW,
                     2,
                     new ValidMaterials(
                             Set.of(
@@ -58,9 +71,9 @@ public final class ModToolTypes {
                     )
             );
 
-    public static final ToolTypeDefinition SCREWDRIVER =
-            new ToolTypeDefinition(
-                    ToolType.SCREWDRIVER,
+    public static final ToolType SCREWDRIVER =
+            new ToolType(
+                    ToolTypeIDs.SCREWDRIVER,
                     2,
                     new ValidMaterials(
                             Set.of(
@@ -72,9 +85,9 @@ public final class ModToolTypes {
                             )
                     )
             );
-    public static final ToolTypeDefinition KNIFE =
-            new ToolTypeDefinition(
-                    ToolType.KNIFE,
+    public static final ToolType KNIFE =
+            new ToolType(
+                    ToolTypeIDs.KNIFE,
                     2,
                     new ValidMaterials(
                             Set.of(
@@ -88,9 +101,9 @@ public final class ModToolTypes {
                             )
                     )
             );
-    public static final ToolTypeDefinition FILE =
-            new ToolTypeDefinition(
-                    ToolType.FILE,
+    public static final ToolType FILE =
+            new ToolType(
+                    ToolTypeIDs.FILE,
                     2,
                     new ValidMaterials(
                             Set.of(
@@ -103,9 +116,9 @@ public final class ModToolTypes {
                     )
             );
 
-    public static final ToolTypeDefinition CROWBAR =
-            new ToolTypeDefinition(
-                    ToolType.CROWBAR,
+    public static final ToolType CROWBAR =
+            new ToolType(
+                    ToolTypeIDs.CROWBAR,
                     2,
                     new ValidMaterials(
                             Set.of(
@@ -118,9 +131,9 @@ public final class ModToolTypes {
                     )
             );
 
-    public static final ToolTypeDefinition WRENCH =
-            new ToolTypeDefinition(
-                    ToolType.WRENCH,
+    public static final ToolType WRENCH =
+            new ToolType(
+                    ToolTypeIDs.WRENCH,
                     2,
                     new ValidMaterials(
                             Set.of(
@@ -132,16 +145,4 @@ public final class ModToolTypes {
                             )
                     )
             );
-
-    public static void registerToolTypes() {
-
-        register(HAMMER);
-        register(MORTAR);
-        register(SAW);
-        register(SCREWDRIVER);
-        register(KNIFE);
-        register(FILE);
-        register(CROWBAR);
-        register(WRENCH);
-    }
 }

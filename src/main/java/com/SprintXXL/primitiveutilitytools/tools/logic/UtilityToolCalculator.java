@@ -1,8 +1,8 @@
 package com.SprintXXL.primitiveutilitytools.tools.logic;
 
-import com.SprintXXL.primitiveutilitytools.tools.stats.MainMaterialStats;
-import com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStatsRegistry;
-import com.SprintXXL.primitiveutilitytools.tools.stats.SupportMaterialStats;
+import com.SprintXXL.primitiveutilitytools.tools.stats.data.MainMaterialStats;
+import com.SprintXXL.primitiveutilitytools.tools.stats.registry.MaterialStatsRegistry;
+import com.SprintXXL.primitiveutilitytools.tools.stats.data.SupportMaterialStats;
 import com.SprintXXL.primitiveutilitytools.tools.nbt.UtilityToolNBT;
 import net.minecraft.item.ItemStack;
 
@@ -23,8 +23,8 @@ public final class UtilityToolCalculator {
             return 1;
         }
 
-        MainMaterialStats mainStats = (MainMaterialStats) MaterialStatsRegistry.getStats(mainID);
-        SupportMaterialStats supportStats = (SupportMaterialStats) MaterialStatsRegistry.getStats(supportID);
+        MainMaterialStats mainStats = (MainMaterialStats) MaterialStatsRegistry.getData(mainID);
+        SupportMaterialStats supportStats = (SupportMaterialStats) MaterialStatsRegistry.getData(supportID);
 
         if (mainStats == null || supportStats == null) {
             return 1;

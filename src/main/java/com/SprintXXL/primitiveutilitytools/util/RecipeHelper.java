@@ -3,8 +3,7 @@ package com.SprintXXL.primitiveutilitytools.util;
 import com.SprintXXL.primitivematter.library.substances.Substance;
 import com.SprintXXL.primitivematter.library.substances.states.solid.forms.SolidForm;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
-import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeDefinition;
-import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolTypeRegistry;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.registry.ToolTypeRegistry;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 
@@ -47,7 +46,7 @@ public final class RecipeHelper {
 
     public static boolean isValidMaterials(ToolType toolType, Substance mainMaterial, Substance supportMaterial) {
 
-        ToolTypeDefinition definition = ToolTypeRegistry.getToolType(toolType);
+        ToolType definition = ToolTypeRegistry.getToolType(toolType.getID());
 
         if (!definition.getValidMaterials().isValidMainMaterial(mainMaterial) ||
                 !definition.getValidMaterials().isValidSupportMaterial(supportMaterial)) {

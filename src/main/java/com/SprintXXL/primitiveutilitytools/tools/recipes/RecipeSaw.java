@@ -5,6 +5,7 @@ import com.SprintXXL.primitivematter.library.substances.states.solid.forms.indus
 import com.SprintXXL.primitiveutilitytools.tools.nbt.UtilityToolNBT;
 import com.SprintXXL.primitiveutilitytools.tools.registry.ModItems;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
+import com.SprintXXL.primitiveutilitytools.tools.tooltype.definitions.ModToolTypes;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,7 +13,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
-import static com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStatsRegistry.hasStats;
+import static com.SprintXXL.primitiveutilitytools.tools.stats.registry.MaterialStatsRegistry.hasStats;
 import static com.SprintXXL.primitiveutilitytools.util.RecipeHelper.*;
 
 public class RecipeSaw extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
@@ -26,7 +27,7 @@ public class RecipeSaw extends IForgeRegistryEntry.Impl<IRecipe> implements IRec
     private static final IndustrialForm SUPPORT_FORM = IndustrialForm.ROD;
 
     private static final Item OUTPUT = ModItems.SAW;
-    private static final ToolType TOOL_TYPE = ToolType.SAW;
+    private static final ToolType TOOL_TYPE = ModToolTypes.SAW;
 
     @Override
     public boolean matches(InventoryCrafting inv, World worldIn) {
