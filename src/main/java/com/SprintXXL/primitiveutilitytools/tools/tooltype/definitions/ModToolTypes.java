@@ -1,6 +1,6 @@
 package com.SprintXXL.primitiveutilitytools.tools.tooltype.definitions;
 
-import com.SprintXXL.primitivematter.library.substances.definitions.ModSubstances;
+import com.SprintXXL.ascentmatter.library.substances.definitions.ModSubstances;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.shared.ValidMaterials;
 import com.sprintxxl.ascenthub.definitions.DefinitionRegistrar;

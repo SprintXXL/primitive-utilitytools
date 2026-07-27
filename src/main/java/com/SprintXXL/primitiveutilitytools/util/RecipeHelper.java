@@ -1,13 +1,13 @@
 package com.SprintXXL.primitiveutilitytools.util;
 
-import com.SprintXXL.primitivematter.library.substances.Substance;
-import com.SprintXXL.primitivematter.library.substances.states.solid.forms.SolidForm;
+import com.SprintXXL.ascentmatter.library.substances.Substance;
+import com.SprintXXL.ascentmatter.library.substances.states.solid.forms.SolidForm;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.registry.ToolTypeRegistry;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 
-import static com.SprintXXL.primitivematter.library.substances.registry.SubstanceRegistry.getSubstanceFromItem;
+import static com.SprintXXL.ascentmatter.library.substances.registry.SubstanceRegistry.getSubstanceFromItem;
 
 public final class RecipeHelper {
 

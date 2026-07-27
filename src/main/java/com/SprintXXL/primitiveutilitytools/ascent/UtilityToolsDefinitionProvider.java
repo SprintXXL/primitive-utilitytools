@@ -7,14 +7,12 @@ import com.sprintxxl.ascenthub.definitions.AscentDefinitionProvider;
 import com.sprintxxl.ascenthub.definitions.DefinitionRegistrar;
 
 import static com.SprintXXL.primitiveutilitytools.Reference.MODID;
-import static com.sprintxxl.ascenthub.definitions.registry.DefinitionProviderRegistry.registerProvider;
 
 public final class UtilityToolsDefinitionProvider implements AscentDefinitionProvider {
 
-    private UtilityToolsDefinitionProvider() {}
-
-    public static void initUtilityToolsDefinitionProvider() {
-        registerProvider(MODID, new UtilityToolsDefinitionProvider());
+    @Override
+    public String getModID() {
+        return MODID;
     }
 
     public void registerDefinitions(DefinitionRegistrar<AscentDefinition> registrar) {

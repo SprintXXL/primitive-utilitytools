@@ -1,7 +1,7 @@
 package com.SprintXXL.primitiveutilitytools.tools.recipes;
 
-import com.SprintXXL.primitivematter.library.substances.Substance;
-import com.SprintXXL.primitivematter.library.substances.states.solid.forms.industrial.IndustrialForm;
+import com.SprintXXL.ascentmatter.library.substances.Substance;
+import com.SprintXXL.ascentmatter.library.substances.states.solid.forms.industrial.IndustrialForm;
 import com.SprintXXL.primitiveutilitytools.tools.nbt.UtilityToolNBT;
 import com.SprintXXL.primitiveutilitytools.tools.registry.ModItems;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;

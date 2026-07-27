@@ -1,6 +1,6 @@
 package com.SprintXXL.primitiveutilitytools.tools.tooltype.shared;
 
-import com.SprintXXL.primitivematter.library.substances.Substance;
+import com.SprintXXL.ascentmatter.library.substances.Substance;
 
 import java.util.Set;
 

@@ -1,6 +1,6 @@
 package com.SprintXXL.primitiveutilitytools.tools.items;
 
-import com.SprintXXL.primitivematter.library.substances.Substance;
+import com.SprintXXL.ascentmatter.library.substances.Substance;
 import com.SprintXXL.primitiveutilitytools.tools.logic.UtilityToolCalculator;
 import com.SprintXXL.primitiveutilitytools.tools.nbt.UtilityToolNBT;
 import com.SprintXXL.primitiveutilitytools.tools.tooltype.ToolType;

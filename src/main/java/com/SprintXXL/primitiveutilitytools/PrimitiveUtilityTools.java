@@ -6,7 +6,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import static com.SprintXXL.primitiveutilitytools.Reference.*;
-import static com.SprintXXL.primitiveutilitytools.ascent.UtilityToolsDefinitionProvider.initUtilityToolsDefinitionProvider;
 import static com.SprintXXL.primitiveutilitytools.ascent.UtilityToolsRecipes.initUtilityToolsRecipes;
 
 @Mod(modid = MODID, name = NAME, version = VERSION)
@@ -20,8 +19,5 @@ public class PrimitiveUtilityTools {
 
         // ARRI \\
         initUtilityToolsRecipes();
-
-        // HUB \\
-        initUtilityToolsDefinitionProvider();
     }
 }

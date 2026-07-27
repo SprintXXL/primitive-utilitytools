@@ -1,6 +1,6 @@
 package com.SprintXXL.primitiveutilitytools.tools.stats;
 
-import com.SprintXXL.primitivematter.library.substances.Substance;
+import com.SprintXXL.ascentmatter.library.substances.Substance;
 import com.SprintXXL.primitiveutilitytools.tools.stats.data.MaterialStatsData;
 import com.sprintxxl.ascenthub.definitions.AscentDefinition;
 

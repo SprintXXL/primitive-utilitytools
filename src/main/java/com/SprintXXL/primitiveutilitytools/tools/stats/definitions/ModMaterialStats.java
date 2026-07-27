@@ -1,6 +1,6 @@
 package com.SprintXXL.primitiveutilitytools.tools.stats.definitions;
 
-import com.SprintXXL.primitivematter.library.substances.definitions.ModSubstances;
+import com.SprintXXL.ascentmatter.library.substances.definitions.ModSubstances;
 import com.SprintXXL.primitiveutilitytools.tools.stats.MaterialStats;
 import com.SprintXXL.primitiveutilitytools.tools.stats.data.MainMaterialStats;
 import com.SprintXXL.primitiveutilitytools.tools.stats.data.SupportMaterialStats;
